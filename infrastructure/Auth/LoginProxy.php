@@ -38,13 +38,13 @@ class LoginProxy
      * @param string $email
      * @param string $password
      */
-    public function attemptLogin($email, $password)
+    public function attemptLogin($username, $password)
     {
-        $user = $this->userRepository->getWhere('email', $email)->first();
+        $user = $this->userRepository->getWhere('username', $username)->first();
 
         if (!is_null($user)) {
             return $this->proxy('password', [
-                'username' => $email,
+                'username' => $username,
                 'password' => $password
             ]);
         }
