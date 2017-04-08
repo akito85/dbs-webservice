@@ -45,6 +45,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         
         /** include laravel csrf-token on jwt token **/
-        'web' => \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class
+        //'web' => \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class
     ];
 }
