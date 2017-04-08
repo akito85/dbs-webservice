@@ -12,7 +12,18 @@ class AddUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'users:add {name} {email} {password}';
+    protected $signature = 'users:add
+                              {username}
+                              {password}
+                              {email}
+                              {full_name}
+                              {gender}
+                              {phone_number}
+                              {access_level}
+                              {status}
+                              {token}
+                              {requests}
+                              {division_id}';
 
     /**
      * The console command description.
@@ -49,9 +60,17 @@ class AddUserCommand extends Command
     public function handle()
     {
         $user = $this->userRepository->create([
-            'name' => $this->argument('name'),
+            'username' => $this->argument('username'),
+            'password' => $this->argument('password'),
             'email' => $this->argument('email'),
-            'password' => $this->argument('password')
+            'full_name' => $this->argument('full_name'),
+            'gender' => $this->argument('gender'),
+            'phone_number' => $this->argument('phone_number'),
+            'access_level' => $this->argument('access_level'),
+            'status' => $this->argument('status'),
+            'token' => $this->argument('token'),
+            'requests' => $this->argument('requests'),
+            'division_id' => $this->argument('division_id')
         ]);
 
         $this->info(sprintf('A user was created with ID %s', $user->id));
