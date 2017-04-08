@@ -13,7 +13,9 @@
         "sentry/sentry": "~1.6",
         "optimus/heimdal": "~1.0",
         "laravel/passport": "^2.0",
-        "optimus/api-consumer": "0.2.*"
+        "optimus/api-consumer": "0.2.*",
+        "monolog/monolog": "^1.22",
+        "league/flysystem": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
