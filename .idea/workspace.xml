@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b7ad665-e8e0-4fe9-ac76-8468943f4e0d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/Users/Models/User.php" afterPath="$PROJECT_DIR$/api/Users/Models/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/infrastructure/Auth/Controllers/LoginController.php" afterPath="$PROJECT_DIR$/infrastructure/Auth/Controllers/LoginController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,17 +44,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LoginController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/infrastructure/Auth/Controllers/LoginController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-              <folding>
-                <marker date="1491712966327" expanded="true" signature="240:874" ph="{...}" />
-                <marker date="1491712966327" expanded="true" signature="427:621" ph="{...}" />
-                <marker date="1491712966327" expanded="true" signature="668:749" ph="{...}" />
-                <marker date="1491712966327" expanded="true" signature="779:872" ph="{...}" />
-              </folding>
+            <state relative-caret-position="448">
+              <caret line="28" column="9" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,11 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/Users/Models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+            <state relative-caret-position="288">
+              <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
               <folding>
                 <element signature="e#766#910#0#PHP" expanded="true" />
                 <marker date="1491713029214" expanded="false" signature="598:685" ph=" The attributes that should be hidden for arrays. ..." />
@@ -134,8 +129,8 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/infrastructure/Auth/LoginProxy.php" />
         <option value="$PROJECT_DIR$/infrastructure/Auth/Requests/LoginRequest.php" />
-        <option value="$PROJECT_DIR$/infrastructure/Auth/Controllers/LoginController.php" />
         <option value="$PROJECT_DIR$/api/Users/Models/User.php" />
+        <option value="$PROJECT_DIR$/infrastructure/Auth/Controllers/LoginController.php" />
       </list>
     </option>
   </component>
@@ -604,12 +599,12 @@
       <option name="presentableId" value="Default" />
       <updated>1491312315518</updated>
       <workItem from="1491312317533" duration="1742000" />
-      <workItem from="1491381923409" duration="37439000" />
+      <workItem from="1491381923409" duration="37486000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39181000" />
+    <option name="totallyTimeSpent" value="39228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1932" height="1043" extended-state="0" />
@@ -679,12 +674,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1491712966327" expanded="true" signature="240:874" ph="{...}" />
-            <marker date="1491712966327" expanded="true" signature="427:621" ph="{...}" />
-            <marker date="1491712966327" expanded="true" signature="668:749" ph="{...}" />
-            <marker date="1491712966327" expanded="true" signature="779:872" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -937,19 +927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/Auth/Controllers/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <marker date="1491712966327" expanded="true" signature="240:874" ph="{...}" />
-            <marker date="1491712966327" expanded="true" signature="427:621" ph="{...}" />
-            <marker date="1491712966327" expanded="true" signature="668:749" ph="{...}" />
-            <marker date="1491712966327" expanded="true" signature="779:872" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
@@ -960,12 +937,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/Users/Models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        <state relative-caret-position="288">
+          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
           <folding>
             <element signature="e#766#910#0#PHP" expanded="true" />
             <marker date="1491713029214" expanded="false" signature="598:685" ph=" The attributes that should be hidden for arrays. ..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/Auth/Controllers/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="28" column="9" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>

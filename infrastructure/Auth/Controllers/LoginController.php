@@ -20,8 +20,13 @@ class LoginController extends Controller
     {
         $username = $request->get('username');
         $password = $request->get('password');
-
-        return $this->response($this->loginProxy->attemptLogin($username, $password));
+        
+        try {
+          return $this->response($this->loginProxy->attemptLogin($username, $password));
+        }
+        catch(\Exception $e) {
+          return $this->response(['message' => 'Wrong credentials'], 404);
+        }
     }
 
     public function refresh(Request $request)
