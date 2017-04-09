@@ -43,8 +43,6 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        
-        /** include laravel csrf-token on jwt token **/
-        //'web' => \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class
+        'web' => \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class
     ];
 }
