@@ -6,4 +6,5 @@ Homestead.json
 .env
 .DS_Store
 /storage/*.key
-composer.lock
+.idea/
+npm-debug.log
