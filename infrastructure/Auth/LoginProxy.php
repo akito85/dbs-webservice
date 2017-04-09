@@ -35,7 +35,7 @@ class LoginProxy
     /**
      * Attempt to create an access token using user credentials
      *
-     * @param string $email
+     * @param string $username
      * @param string $password
      */
     public function attemptLogin($username, $password)
