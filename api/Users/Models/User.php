@@ -17,8 +17,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
-        'password',
         'email',
+        'password',
         'full_name',
         'gender',
         'phone_number',
@@ -37,4 +37,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+  
+    /**
+     * Find the user identified by the given $identifier.
+     *
+     * @param $identifier username|email|phone
+     * @return mixed
+     */
+    
+    /** override the default email auth **/
+    public function findForPassport($identifier) {
+      return User::orWhere('email', $identifier)
+                  ->orWhere('username', $identifier)
+                  ->orWhere('phone_number', $identifier)
+                  ->first();
+    }
 }
