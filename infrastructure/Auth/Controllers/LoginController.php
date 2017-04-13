@@ -19,7 +19,8 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         $username = $request->get('username');
-        $password = $request->get('password');
+        $password = base64_decode($request->get('password'));
+        $password = preg_replace('/-qWERty1234Nox/i', '', $password);
         
         try {
           return $this->response($this->loginProxy->attemptLogin($username, $password));

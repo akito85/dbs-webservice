@@ -45,7 +45,8 @@ class LoginProxy
         if (!is_null($user)) {
             return $this->proxy('password', [
                 'username' => $username,
-                'password' => $password
+                'password' => $password,
+                'access_level' => $user->access_level
             ]);
         }
 
@@ -78,19 +79,19 @@ class LoginProxy
             'client_secret' => env('PASSWORD_CLIENT_SECRET'),
             'grant_type'    => $grantType
         ]);
-
+        
         $response = $this->apiConsumer->post('/oauth/token', $data);
 
         if (!$response->isSuccessful()) {
             throw new InvalidCredentialsException();
         }
 
-        $data = json_decode($response->getContent());
+        $response = json_decode($response->getContent());
 
         // Create a refresh token cookie
         $this->cookie->queue(
             self::REFRESH_TOKEN,
-            $data->refresh_token,
+            $response->refresh_token,
             2628000, // 5years
             null,
             null,
@@ -99,8 +100,9 @@ class LoginProxy
         );
 
         return [
-            'access_token' => $data->access_token,
-            'expires_in' => $data->expires_in
+            'access_level' => $data['access_level'],
+            'access_token' => $response->access_token,
+            'expires_in' => $response->expires_in
         ];
     }
 

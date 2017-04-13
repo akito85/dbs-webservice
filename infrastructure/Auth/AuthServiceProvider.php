@@ -33,6 +33,22 @@ class AuthServiceProvider extends ServiceProvider
             // $router->forPersonalAccessTokens();
             $router->forTransientTokens();
         });
+        
+        /*
+         * 0 -> Developer
+         * 1 -> Administrator
+         * 2 -> Manager
+         * 3 -> Staff
+         * 4 -> Driver
+         */
+        
+        Passport::tokensCan([
+            'Developer' => 'le me',
+            'Administrator' => 'All scope',
+            'Manager' => 'Manager scope',
+            'Staff' => 'Staff scope',
+            'Driver' => 'Driver scope'
+        ]);
 
         Passport::tokensExpireIn(Carbon::now()->addYears(10));
 
