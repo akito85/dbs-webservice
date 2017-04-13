@@ -8,3 +8,4 @@ Homestead.json
 /storage/*.key
 .idea/
 npm-debug.log
+composer.lock
