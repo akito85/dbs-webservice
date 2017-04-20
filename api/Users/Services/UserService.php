@@ -5,12 +5,14 @@ namespace Api\Users\Services;
 use Exception;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Events\Dispatcher;
 use Api\Users\Exceptions\UserNotFoundException;
 use Api\Users\Events\UserWasCreated;
 use Api\Users\Events\UserWasDeleted;
 use Api\Users\Events\UserWasUpdated;
 use Api\Users\Repositories\UserRepository;
+use Api\Users\Repositories\DriverRepository;
 
 class UserService
 {
