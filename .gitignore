@@ -9,3 +9,5 @@ Homestead.json
 .idea/
 npm-debug.log
 composer.lock
+.vscode/
+flow/
