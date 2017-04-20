@@ -15,12 +15,12 @@ class DriverRepository extends Repository
 
     public function create(array $data)
     {
-        $user = $this->getModel();
+        $driver = $this->getModel();
 
-        $user->fill($data);
-        $user->save();
+        $driver->fill($data);
+        $driver->save();
 
-        return $user;
+        return $driver;
     }
 
     public function update(Driver $driver, array $data)
