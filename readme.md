@@ -52,22 +52,20 @@ Create request uses `POST` method.
 ```
 POST https://dbs.noxus.co.id/{tableNamePlural}
 ```
-
-````json
-Header:
+**Header:**
+```
 Authentication: Bearer<space>{access_token}
 Content-Type: application/json
+```
 
-Body:
+**Body:**
+````json
 {
-  tableName: {
-    fieldName[0]: fieldValue[0],
-    fieldName[1]: fieldValue[1],
-    fieldName[2]: fieldValue[2],
-    .
-    .
-    .
-    fieldName[n]: fieldValue[n],
+  "tableName": {
+    "fieldName[0]": "fieldValue[0]",
+    "fieldName[1]": "fieldValue[1]",
+    "fieldName[2]": "fieldValue[2]",
+    "fieldName[n]": "fieldValue[n]",
   }
 }
 ````
@@ -103,24 +101,24 @@ PATCH https://dbs.noxus.co.id/{tableNamePlural}
 PATCH https://dbs.noxus.co.id/{tableNamePlural}/{fieldId}
 ```
 
-````json
-Header:
+**Header:**
+```
 Authentication: Bearer<space>{access_token}
 Content-Type: application/json
+```
 
-Body:
+**Body:**
+````json
 {
-  tableName: {
-    fieldName[0]: fieldValue[0],
-    fieldName[1]: fieldValue[1],
-    fieldName[2]: fieldValue[2],
-    .
-    .
-    .
-    fieldName[n]: fieldValue[n],
+  "tableName": {
+    "fieldName[0]": "fieldValue[0]",
+    "fieldName[1]": "fieldValue[1]",
+    "fieldName[2]": "fieldValue[2]",
+    "fieldName[n]": "fieldValue[n]",
   }
 }
 ````
+
 
 **Request  Example:** `PATCH https://dbs.noxus.co.id/regions`
 
@@ -191,8 +189,6 @@ Available Query Parameters
 | Limit         | integer | Limit of resources to return             |
 | Page          | integer | For use with limit                       |
 | Filter_groups | array   | Array of filter groups. See below for syntax. |
-
----
 
 ### I. Includes
 ---
