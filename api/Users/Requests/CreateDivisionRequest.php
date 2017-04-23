@@ -4,7 +4,7 @@ namespace Api\Users\Requests;
 
 use Infrastructure\Http\ApiRequest;
 
-class CreateDriverRequest extends ApiRequest
+class CreateDivisionRequest extends ApiRequest
 {
     public function authorize()
     {
@@ -14,11 +14,9 @@ class CreateDriverRequest extends ApiRequest
     public function rules()
     {
         return [
-            'driver' => 'array|required',
-            'driver.user_id' => 'required|integer',
-            'driver.status' => 'required',
-            'driver.latitude' => 'required',
-            'driver.longitude' => 'required'
+            'division' => 'array|required',
+            'division.site_id' => 'required|integer',
+            'division.name' => 'required|string'
         ];
     }
 
@@ -27,5 +25,5 @@ class CreateDriverRequest extends ApiRequest
         return [
 
         ];
-    }
+      }
 }

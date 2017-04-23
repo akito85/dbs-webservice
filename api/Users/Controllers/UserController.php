@@ -3,12 +3,15 @@
 namespace Api\Users\Controllers;
 
 use Illuminate\Http\Request;
+use Optimus\Bruno\EloquentBuilderTrait;
 use Infrastructure\Http\Controller;
 use Api\Users\Requests\CreateUserRequest;
 use Api\Users\Services\UserService;
 
 class UserController extends Controller
 {
+    use EloquentBuilderTrait;
+
     private $userService;
 
     public function __construct(UserService $userService)
@@ -21,6 +24,7 @@ class UserController extends Controller
         $resourceOptions = $this->parseResourceOptions();
 
         $data = $this->userService->getAll($resourceOptions);
+
         $parsedData = $this->parseData($data, $resourceOptions, 'users');
 
         return $this->response($parsedData);

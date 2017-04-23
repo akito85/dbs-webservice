@@ -11,6 +11,6 @@ class DriverWasCreated extends Event
 
     public function __construct(Driver $driver)
     {
-        $this->driver = $drivers;
+        $this->driver = $driver;
     }
 }

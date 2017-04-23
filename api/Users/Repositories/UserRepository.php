@@ -3,6 +3,7 @@
 namespace Api\Users\Repositories;
 
 use Api\Users\Models\User;
+//use Illuminate\Database\Query\Builder;
 use Infrastructure\Database\Eloquent\Repository;
 
 class UserRepository extends Repository
@@ -31,5 +32,13 @@ class UserRepository extends Repository
         $user->save();
 
         return $user;
+    }
+
+    public function filterDriverStatus(Builder $query, $method, $clauseOperator, $value, $in)
+    {
+        // check if value is true
+        if ($value) {
+            $query->whereIn('drivers.status', ['available']);
+        }
     }
 }

@@ -18,11 +18,9 @@ class Driver extends Model
     /**
      * The relationship of drivers table
      * 1. drivers.user_id --> users.id
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function users()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsToMany(User::class, 'users_drivers', 'user_id', 'id');
     }
 }

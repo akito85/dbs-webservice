@@ -4,7 +4,7 @@ namespace Api\Users\Requests;
 
 use Infrastructure\Http\ApiRequest;
 
-class CreateDriverRequest extends ApiRequest
+class CreateFeedbackRequest extends ApiRequest
 {
     public function authorize()
     {
@@ -14,11 +14,10 @@ class CreateDriverRequest extends ApiRequest
     public function rules()
     {
         return [
-            'driver' => 'array|required',
-            'driver.user_id' => 'required|integer',
-            'driver.status' => 'required',
-            'driver.latitude' => 'required',
-            'driver.longitude' => 'required'
+            'feedback' => 'array|required',
+            'feedback.trip_id' => 'required|integer',
+            'feedback.rating' => 'required|integer',
+            'feedback.comment' => 'required|string'
         ];
     }
 
