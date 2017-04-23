@@ -27,7 +27,7 @@ class RegionService
         AuthManager $auth,
         DatabaseManager $database,
         Dispatcher $dispatcher,
-        UserRepository $regionRepository
+        RegionRepository $regionRepository
     ) {
         $this->auth = $auth;
         $this->database = $database;
