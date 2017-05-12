@@ -27,7 +27,7 @@ class WaypointService
         AuthManager $auth,
         DatabaseManager $database,
         Dispatcher $dispatcher,
-        UserRepository $waypointRepository
+        WaypointRepository $waypointRepository
     ) {
         $this->auth = $auth;
         $this->database = $database;
@@ -42,7 +42,7 @@ class WaypointService
 
     public function getById($waypointId, array $options = [])
     {
-        $waypoint = $this->getRequestedUser($waypointId);
+        $waypoint = $this->getRequestedWaypoint($waypointId);
 
         return $waypoint;
     }
@@ -58,7 +58,7 @@ class WaypointService
 
     public function update($waypointId, array $data)
     {
-        $waypoint = $this->getRequestedUser($waypointId);
+        $waypoint = $this->getRequestedWaypoint($waypointId);
 
         $this->waypointRepository->update($waypoint, $data);
 
@@ -69,14 +69,14 @@ class WaypointService
 
     public function delete($waypointId)
     {
-        $waypoint = $this->getRequestedUser($waypointId);
+        $waypoint = $this->getRequestedWaypoint($waypointId);
 
         $this->waypointRepository->delete($waypointId);
 
         $this->dispatcher->fire(new WaypointWasDeleted($waypoint));
     }
 
-    private function getRequestedUser($waypointId)
+    private function getRequestedWaypoint($waypointId)
     {
         $waypoint = $this->waypointRepository->getById($waypointId);
 

@@ -27,7 +27,7 @@ class SiteService
         AuthManager $auth,
         DatabaseManager $database,
         Dispatcher $dispatcher,
-        UserRepository $siteRepository
+        SiteRepository $siteRepository
     ) {
         $this->auth = $auth;
         $this->database = $database;
@@ -42,7 +42,7 @@ class SiteService
 
     public function getById($siteId, array $options = [])
     {
-        $site = $this->getRequestedUser($siteId);
+        $site = $this->getRequestedSite($siteId);
 
         return $site;
     }
@@ -58,7 +58,7 @@ class SiteService
 
     public function update($siteId, array $data)
     {
-        $site = $this->getRequestedUser($siteId);
+        $site = $this->getRequestedSite($siteId);
 
         $this->siteRepository->update($site, $data);
 
@@ -69,14 +69,14 @@ class SiteService
 
     public function delete($siteId)
     {
-        $site = $this->getRequestedUser($siteId);
+        $site = $this->getRequestedSite($siteId);
 
         $this->siteRepository->delete($siteId);
 
         $this->dispatcher->fire(new SiteWasDeleted($site));
     }
 
-    private function getRequestedUser($siteId)
+    private function getRequestedSite($siteId)
     {
         $site = $this->siteRepository->getById($siteId);
 

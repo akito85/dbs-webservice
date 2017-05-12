@@ -27,7 +27,7 @@ class TripService
         AuthManager $auth,
         DatabaseManager $database,
         Dispatcher $dispatcher,
-        UserRepository $tripRepository
+        TripRepository $tripRepository
     ) {
         $this->auth = $auth;
         $this->database = $database;
@@ -42,7 +42,7 @@ class TripService
 
     public function getById($tripId, array $options = [])
     {
-        $trip = $this->getRequestedUser($tripId);
+        $trip = $this->getRequestedTrip($tripId);
 
         return $trip;
     }
@@ -58,7 +58,7 @@ class TripService
 
     public function update($tripId, array $data)
     {
-        $trip = $this->getRequestedUser($tripId);
+        $trip = $this->getRequestedTrip($tripId);
 
         $this->tripRepository->update($trip, $data);
 
@@ -69,14 +69,14 @@ class TripService
 
     public function delete($tripId)
     {
-        $trip = $this->getRequestedUser($tripId);
+        $trip = $this->getRequestedTrip($tripId);
 
         $this->tripRepository->delete($tripId);
 
         $this->dispatcher->fire(new TripWasDeleted($trip));
     }
 
-    private function getRequestedUser($tripId)
+    private function getRequestedTrip($tripId)
     {
         $trip = $this->tripRepository->getById($tripId);
 

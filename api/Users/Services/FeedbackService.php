@@ -27,7 +27,7 @@ class FeedbackService
         AuthManager $auth,
         DatabaseManager $database,
         Dispatcher $dispatcher,
-        UserRepository $feedbackRepository
+        FeedbackRepository $feedbackRepository
     ) {
         $this->auth = $auth;
         $this->database = $database;
@@ -42,7 +42,7 @@ class FeedbackService
 
     public function getById($feedbackId, array $options = [])
     {
-        $feedback = $this->getRequestedUser($feedbackId);
+        $feedback = $this->getRequestedFeedback($feedbackId);
 
         return $feedback;
     }
@@ -58,7 +58,7 @@ class FeedbackService
 
     public function update($feedbackId, array $data)
     {
-        $feedback = $this->getRequestedUser($feedbackId);
+        $feedback = $this->getRequestedFeedback($feedbackId);
 
         $this->feedbackRepository->update($feedback, $data);
 
@@ -69,14 +69,14 @@ class FeedbackService
 
     public function delete($feedbackId)
     {
-        $feedback = $this->getRequestedUser($feedbackId);
+        $feedback = $this->getRequestedFeedback($feedbackId);
 
         $this->feedbackRepository->delete($feedbackId);
 
         $this->dispatcher->fire(new FeedbackWasDeleted($feedback));
     }
 
-    private function getRequestedUser($feedbackId)
+    private function getRequestedFeedback($feedbackId)
     {
         $feedback = $this->feedbackRepository->getById($feedbackId);
 

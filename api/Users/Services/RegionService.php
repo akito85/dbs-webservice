@@ -42,7 +42,7 @@ class RegionService
 
     public function getById($regionId, array $options = [])
     {
-        $region = $this->getRequestedUser($regionId);
+        $region = $this->getRequestedRegion($regionId);
 
         return $region;
     }
@@ -58,7 +58,7 @@ class RegionService
 
     public function update($regionId, array $data)
     {
-        $region = $this->getRequestedUser($regionId);
+        $region = $this->getRequestedRegion($regionId);
 
         $this->regionRepository->update($region, $data);
 
@@ -69,14 +69,14 @@ class RegionService
 
     public function delete($regionId)
     {
-        $region = $this->getRequestedUser($regionId);
+        $region = $this->getRequestedRegion($regionId);
 
         $this->regionRepository->delete($regionId);
 
         $this->dispatcher->fire(new RegionWasDeleted($region));
     }
 
-    private function getRequestedUser($regionId)
+    private function getRequestedRegion($regionId)
     {
         $region = $this->regionRepository->getById($regionId);
 

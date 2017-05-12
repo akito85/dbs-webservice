@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\Users\Services;
+namespace Api\Checkpoints\Services;
 
 use Exception;
 use Illuminate\Auth\AuthManager;
@@ -27,7 +27,7 @@ class CheckpointService
         AuthManager $auth,
         DatabaseManager $database,
         Dispatcher $dispatcher,
-        UserRepository $checkpointRepository
+        CheckpointRepository $checkpointRepository
     ) {
         $this->auth = $auth;
         $this->database = $database;
@@ -42,7 +42,7 @@ class CheckpointService
 
     public function getById($checkpointId, array $options = [])
     {
-        $checkpoint = $this->getRequestedUser($checkpointId);
+        $checkpoint = $this->getRequestedCheckpoint($checkpointId);
 
         return $checkpoint;
     }
@@ -58,7 +58,7 @@ class CheckpointService
 
     public function update($checkpointId, array $data)
     {
-        $checkpoint = $this->getRequestedUser($checkpointId);
+        $checkpoint = $this->getRequestedCheckpoint($checkpointId);
 
         $this->checkpointRepository->update($checkpoint, $data);
 
@@ -69,14 +69,14 @@ class CheckpointService
 
     public function delete($checkpointId)
     {
-        $checkpoint = $this->getRequestedUser($checkpointId);
+        $checkpoint = $this->getRequestedCheckpoint($checkpointId);
 
         $this->checkpointRepository->delete($checkpointId);
 
         $this->dispatcher->fire(new CheckpointWasDeleted($checkpoint));
     }
 
-    private function getRequestedUser($checkpointId)
+    private function getRequestedCheckpoint($checkpointId)
     {
         $checkpoint = $this->checkpointRepository->getById($checkpointId);
 

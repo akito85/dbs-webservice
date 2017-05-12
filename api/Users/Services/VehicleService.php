@@ -27,7 +27,7 @@ class VehicleService
         AuthManager $auth,
         DatabaseManager $database,
         Dispatcher $dispatcher,
-        UserRepository $vehicleRepository
+        VehicleRepository $vehicleRepository
     ) {
         $this->auth = $auth;
         $this->database = $database;
@@ -42,7 +42,7 @@ class VehicleService
 
     public function getById($vehicleId, array $options = [])
     {
-        $vehicle = $this->getRequestedUser($vehicleId);
+        $vehicle = $this->getRequestedVehicle($vehicleId);
 
         return $vehicle;
     }
@@ -58,7 +58,7 @@ class VehicleService
 
     public function update($vehicleId, array $data)
     {
-        $vehicle = $this->getRequestedUser($vehicleId);
+        $vehicle = $this->getRequestedVehicle($vehicleId);
 
         $this->vehicleRepository->update($vehicle, $data);
 
@@ -69,14 +69,14 @@ class VehicleService
 
     public function delete($vehicleId)
     {
-        $vehicle = $this->getRequestedUser($vehicleId);
+        $vehicle = $this->getRequestedVehicle($vehicleId);
 
         $this->vehicleRepository->delete($vehicleId);
 
         $this->dispatcher->fire(new VehicleWasDeleted($vehicle));
     }
 
-    private function getRequestedUser($vehicleId)
+    private function getRequestedVehicle($vehicleId)
     {
         $vehicle = $this->vehicleRepository->getById($vehicleId);
 

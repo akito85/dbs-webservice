@@ -27,7 +27,7 @@ class DivisionService
         AuthManager $auth,
         DatabaseManager $database,
         Dispatcher $dispatcher,
-        UserRepository $divisionRepository
+        DivisionRepository $divisionRepository
     ) {
         $this->auth = $auth;
         $this->database = $database;
@@ -42,7 +42,7 @@ class DivisionService
 
     public function getById($divisionId, array $options = [])
     {
-        $division = $this->getRequestedUser($divisionId);
+        $division = $this->getRequestedDivision($divisionId);
 
         return $division;
     }
@@ -58,7 +58,7 @@ class DivisionService
 
     public function update($divisionId, array $data)
     {
-        $division = $this->getRequestedUser($divisionId);
+        $division = $this->getRequestedDivision($divisionId);
 
         $this->divisionRepository->update($division, $data);
 
@@ -69,14 +69,14 @@ class DivisionService
 
     public function delete($divisionId)
     {
-        $division = $this->getRequestedUser($divisionId);
+        $division = $this->getRequestedDivision($divisionId);
 
         $this->divisionRepository->delete($divisionId);
 
         $this->dispatcher->fire(new DivisionWasDeleted($division));
     }
 
-    private function getRequestedUser($divisionId)
+    private function getRequestedDivision($divisionId)
     {
         $division = $this->divisionRepository->getById($divisionId);
 
