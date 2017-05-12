@@ -18,8 +18,8 @@ class Vehicle extends Model
         'year'
     ];
 
-    public function drivers()
+    public function users()
     {
-        return $this->belongsToMany(User::class, 'users', 'id', 'driver_id');
+        return $this->belongsTo(User::class, 'driver_id', 'id');
     }
 }
