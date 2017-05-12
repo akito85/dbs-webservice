@@ -70,3 +70,6 @@ $router->post('/waypoints', 'WaypointController@create');
 $router->put('/waypoints/{id}', 'WaypointController@update');
 $router->patch('/waypoints/{id}', 'WaypointController@update');
 $router->delete('/waypoints/{id}', 'WaypointController@delete');
+
+/** FCM push */
+$router->post('/dispatch/{userToken}', 'DispatcherController@dispatch');
