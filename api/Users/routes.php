@@ -72,4 +72,9 @@ $router->patch('/waypoints/{id}', 'WaypointController@update');
 $router->delete('/waypoints/{id}', 'WaypointController@delete');
 
 /** FCM push */
-$router->post('/dispatch/{userToken}', 'DispatcherController@dispatch');
+$router->post('/userSync/{driverToken}', 'UserSyncController@userSync');
+$router->post('/driverSync/{userToken}', 'DriverSyncController@driverSync');
+
+
+/** test **/
+$router->post('/testUserSync', 'UserSyncController@testUserSync');
