@@ -13,7 +13,7 @@ return [
     'log_enabled' => true,
 
     'http' => [
-        'server_key' => env('FCM_SERVER_KEY', 'AIzaSyD7sCpKM8bCIVilGnGTwNg6X9iJOwdHKLE'),
+        'server_key' => env('FCM_SERVER_KEY', 'AIzaSyCiOr3k7i--qeX8kyypkGyhfCzh5_B7WhY'),
         'sender_id' => env('FCM_SENDER_ID', '892494730759'),
         'server_send_url' => 'https://fcm.googleapis.com/fcm/send',
         'server_group_url' => 'https://android.googleapis.com/gcm/notification',
