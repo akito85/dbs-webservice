@@ -18,7 +18,7 @@ $router->delete('/divisions/{id}', 'DivisionController@delete');
 $router->get('/drivers', 'DriverController@getAll');
 $router->get('/drivers/{id}', 'DriverController@getById');
 $router->post('/drivers', 'DriverController@create');
-$router->put('/drivers/{id}', 'DriverController@update');
+$router->post('/drivers/syncUser/{userToken}', 'DriverController@syncUser');
 $router->patch('/drivers/{id}', 'DriverController@update');
 $router->delete('/drivers/{id}', 'DriverController@delete');
 
