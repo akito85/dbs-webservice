@@ -36,6 +36,13 @@ class UserService
         $this->userRepository = $userRepository;
     }
 
+    public function syncDriver($driverToken, array $data)
+    {
+        $syncDriver = $this->userRepository->syncDriver($driverToken, $data);
+
+        return $syncDriver;
+    }
+
     public function getAll($options = [])
     {
         return $this->userRepository->get($options);

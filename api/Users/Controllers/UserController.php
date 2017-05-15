@@ -58,4 +58,19 @@ class UserController extends Controller
     {
         return $this->response($this->userService->delete($userId));
     }
+
+    public function syncDriver($driverToken, Request $request)
+    {
+        $data = json_decode(json_encode($request->all()), true);
+        $syncDriver = $this->userService->syncDriver($driverToken, $data);
+
+        return $this->response($syncDriver);
+    }
+
+    public function testSyncDriver(Request $request)
+    {
+        $data = json_decode(json_encode($request->all()), true);
+
+        return $data['notification']['title'];
+    }
 }

@@ -53,6 +53,8 @@ $router->delete('/trips/{id}', 'TripController@delete');
 $router->get('/users', 'UserController@getAll');
 $router->get('/users/{id}', 'UserController@getById');
 $router->post('/users', 'UserController@create');
+$router->post('/users/syncDriver/{driverToken}', 'UserController@syncDriver');
+$router->post('/users/testSyncDriver', 'UserController@testSyncDriver');
 $router->put('/users/{id}', 'UserController@update');
 $router->patch('/users/{id}', 'UserController@update');
 $router->delete('/users/{id}', 'UserController@delete');
@@ -70,11 +72,3 @@ $router->post('/waypoints', 'WaypointController@create');
 $router->put('/waypoints/{id}', 'WaypointController@update');
 $router->patch('/waypoints/{id}', 'WaypointController@update');
 $router->delete('/waypoints/{id}', 'WaypointController@delete');
-
-/** FCM push */
-$router->post('/userSync/{driverToken}', 'UserSyncController@userSync');
-$router->post('/driverSync/{userToken}', 'DriverSyncController@driverSync');
-
-
-/** test **/
-$router->post('/testUserSync', 'UserSyncController@testUserSync');
