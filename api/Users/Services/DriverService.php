@@ -34,6 +34,13 @@ class DriverService
       $this->driverRepository = $driverRepository;
     }
 
+    public function syncUser($userToken, array $data)
+    {
+        $syncUser = $this->driverRepository->syncUser($userToken, $data);
+
+        return $syncUser;
+    }
+
     public function getAll($options = [])
     {
       return $this->driverRepository->get($options);

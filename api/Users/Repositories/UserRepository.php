@@ -37,15 +37,15 @@ class UserRepository extends Repository
         return $user;
     }
 
-    public function syncDriver($driverToken, $data)
+    public function syncDriver($driverToken, array $data)
     {
         $optionBuiler = new OptionsBuilder();
         $optionBuiler->setTimeToLive(60*20);
 
         $notificationBuilder = new PayloadNotificationBuilder();
         $notificationBuilder->setTitle($data['notification']['title'])
-         ->setBody($data['notification']['body'])
-         ->setSound($data['notification']['sound']);
+                            ->setBody($data['notification']['body'])
+                            ->setSound($data['notification']['sound']);
 
         $dataBuilder = new PayloadDataBuilder();
         $dataBuilder->addData($data['payloads']);

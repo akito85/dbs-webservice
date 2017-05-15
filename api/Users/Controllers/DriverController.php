@@ -55,4 +55,19 @@ class DriverController extends Controller
     {
         return $this->response($this->driverService->delete($driverId));
     }
+
+    public function syncUser($userToken, Request $request)
+    {
+        $data = json_decode(json_encode($request->all()), true);
+        $syncUser = $this->driverService->syncUser($userToken, $data);
+
+        return $this->response($syncUser);
+    }
+
+    public function testSyncUser(Request $request)
+    {
+        $data = json_decode(json_encode($request->all()), true);
+
+        return $data['notification']['title'];
+    }
 }
