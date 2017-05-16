@@ -46,7 +46,8 @@ class LoginProxy
             return $this->proxy('password', [
                 'username' => $username,
                 'password' => $password,
-                'access_level' => $user->access_level
+                'access_level' => $user->access_level,
+                'user_id' => $user->id
             ]);
         }
 
@@ -100,6 +101,7 @@ class LoginProxy
         );
 
         return [
+            'user_id' => $data['user_id'],
             'access_level' => $data['access_level'],
             'access_token' => $response->access_token,
             'expires_in' => $response->expires_in
