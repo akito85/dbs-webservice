@@ -4,6 +4,7 @@ namespace Api\Users\Services;
 
 use Illuminate\Auth\AuthManager;
 use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Events\Dispatcher;
 use Api\Users\Exceptions\UserNotFoundException;
 use Api\Users\Events\UserWasCreated;
@@ -67,10 +68,18 @@ class UserService
     public function update($userId, array $data)
     {
         $user = $this->getRequestedUser($userId);
+        $this->database->beginTransaction();
 
-        $this->userRepository->update($user, $data);
+        try {
+            $this->userRepository->update($user, $data);
+            $this->dispatcher->fire(new UserWasUpdated($user));
+        } catch (Exception $e) {
+            $this->database->rollBack();
 
-        $this->dispatcher->fire(new UserWasUpdated($user));
+            throw $e;
+        }
+
+        $this->database->commit();
 
         return $user;
     }
