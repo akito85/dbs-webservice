@@ -21,6 +21,6 @@ class Driver extends Model
      */
     public function users()
     {
-        return $this->belongsToMany(User::class, 'drivers', 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
