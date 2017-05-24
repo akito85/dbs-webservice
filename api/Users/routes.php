@@ -58,6 +58,7 @@ $router->post('/users/testSyncDriver', 'UserController@testSyncDriver');
 $router->put('/users/{id}', 'UserController@update');
 $router->patch('/users/{id}', 'UserController@update');
 $router->delete('/users/{id}', 'UserController@delete');
+$router->post('/users/testAddTrip', 'UserController@testAddTrip');
 
 $router->get('/vehicles', 'VehicleController@getAll');
 $router->get('/vehicles/{id}', 'VehicleController@getById');

@@ -73,4 +73,11 @@ class UserController extends Controller
 
         return $data['notification']['title'];
     }
+
+    public function testAddTrip(Request $request)
+    {
+        $data = json_decode(json_encode($request->all()), true);
+
+        return $this->userService->testAddTrip($data);
+    }
 }
