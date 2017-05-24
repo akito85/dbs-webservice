@@ -59,7 +59,7 @@ Content-Type: application/json
 ```
 
 **Body:**
-````json
+```json
 {
   "tableName": {
     "fieldName[0]": "fieldValue[0]",
@@ -68,7 +68,7 @@ Content-Type: application/json
     "fieldName[n]": "fieldValue[n]",
   }
 }
-````
+```
 
 **Request  Example:** `POST https://dbs.noxus.co.id/regions`
 
@@ -108,7 +108,7 @@ Content-Type: application/json
 ```
 
 **Body:**
-````json
+```json
 {
   "tableName": {
     "fieldName[0]": "fieldValue[0]",
@@ -117,31 +117,10 @@ Content-Type: application/json
     "fieldName[n]": "fieldValue[n]",
   }
 }
-````
-
-
-**Request  Example:** `PATCH https://dbs.noxus.co.id/regions`
-
-```json
-{ 
-  "region": {
-    "name": "Tes"
-  }
-}
-```
-
-```json
-{
-  "name": "Tes",
-  "updated_at": "2017-04-23 13:52:37",
-  "created_at": "2017-04-23 13:52:37",
-  "id": 6
-}
 ```
 
 **Request Example:** `PATCH https://dbs.noxus.co.id/regions/6`
-
-```
+```json
 { 
   "region": {
     "name": "TESTER"
@@ -169,10 +148,10 @@ Delete request use `delete` method.
 DELETE https://dbs.noxus.co.id/{tableNamePlural}/{fieldId}
 ```
 
-````json
+```json
 Header:
 Authentication: Bearer<space>{access_token}
-````
+```
 
 **Request  Example:** `DELETE https://dbs.noxus.co.id/regions/6`
 
@@ -526,7 +505,7 @@ GET https://dbs.noxus.co.id/regions
 GET https://dbs.noxus.co.id/feedback
 ```
 
-**Filter JSON Structure**
+**Filter Single**
 ```
 {
   "filter_groups": [
@@ -538,14 +517,122 @@ GET https://dbs.noxus.co.id/feedback
           "operator": {filterOperator}
         }
       ]
-    }
+    },  
   ]
 }
 ```
 
-**Filter ARRAY Structure [URL DECODED]**
+**Filter Single With "AND"**
+```
+{
+  "filter_groups": [
+    { 
+      "and" : {boolean},
+      "filters": [
+        {
+          "key": {fieldName},
+          "value": {fieldValue},
+          "operator": "gt"
+        },
+        {
+          "key": {fieldName},
+          "value": {fieldValue},
+          "operator": "lt"
+        }
+      ]
+    }   
+  ]
+}
+```
+
+**Filter Single With "OR"**
+```
+{
+  "filter_groups": [
+    { 
+      "or" : {boolean},
+      "filters": [
+        {
+          "key": {fieldName},
+          "value": {fieldValue},
+          "operator": "gt"
+        },
+        {
+          "key": {fieldName},
+          "value": {fieldValue},
+          "operator": "lt"
+        }
+      ]
+    }   
+  ]
+}
+```
+
+**Filter Multiple**
+```
+{
+  "filter_groups": [
+    {
+      "filters": [
+        {
+          "key": {fieldName},
+          "value": {fieldValue},
+          "operator": {filterOperator}
+        }
+      ]
+    },
+    {
+      "filters": [
+        {
+          "key": {fieldName},
+          "value": {fieldValue},
+          "operator": "gt"
+        },
+        {
+          "key": {fieldName},
+          "value": {fieldValue},
+          "operator": "lt"
+        }
+      ]
+    }   
+  ]
+}
+```
+
+
+**Filter Single as URL (not encoded)**
 ```
 filter_groups[0][filters][0][key]={fieldName}&
 filter_groups[0][filters][0][value]={fieldValue}&
-filter_groups[0][filters][0][operator]={filterOperator}
+filter_groups[0][filters][0][operator]={filterOperator}&
+```
+
+
+**Filter Single With "OR" as URL (not encoded)**
+```
+filter_groups[0][or]={boolean}&
+filter_groups[0][filters][0][key]={fieldName}&
+filter_groups[0][filters][0][value]={fieldValue}&
+filter_groups[0][filters][0][operator]={filterOperator}&
+```
+
+**Filter Single With "AND" as URL (not encoded)**
+```
+filter_groups[0][and]={boolean}&
+filter_groups[0][filters][0][key]={fieldName}&
+filter_groups[0][filters][0][value]={fieldValue}&
+filter_groups[0][filters][0][operator]={filterOperator}&
+```
+
+**Filter Multiple as URL (not encoded)**
+```
+filter_groups[0][filters][0][key]={fieldName}&
+filter_groups[0][filters][0][value]={fieldValue}&
+filter_groups[0][filters][0][operator]={filterOperator}&
+filter_groups[1][filters][0][key]={fieldName}&
+filter_groups[1][filters][0][value]={fieldValue}&
+filter_groups[1][filters][0][operator]={filterOperator}&
+filter_groups[1][filters][1][key]={fieldName}&
+filter_groups[1][filters][1][value]={fieldValue}&
+filter_groups[1][filters][1][operator]={filterOperator}&
 ```
