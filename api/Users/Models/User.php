@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Api\Users\Models\Division;
 use Api\Users\Models\Driver;
 use Api\Users\Models\Trip;
+use Api\Users\Models\Vehicle;
 
 class User extends Authenticatable
 {
@@ -65,11 +66,21 @@ class User extends Authenticatable
      */
     public function divisions()
     {
-        return $this->belongsToMany(Division::class, 'users', 'id', 'division_id');
+        return $this->belongsTo(Division::class, 'division_id', 'id');
     }
 
     public function drivers()
     {
         return $this->belongsTo(Driver::class,'id', 'user_id');
+    }
+
+    public function trips()
+    {
+        return $this->belongsTo(Trip::class, 'id', 'passenger_id');
+    }
+
+    public function vehicles()
+    {
+        return $this->belongsTo(Vehicle::class, 'id', 'driver_id');
     }
 }
