@@ -15,6 +15,7 @@ use Optimus\Bruno\EloquentBuilderTrait;
 
 use Api\Users\Repositories\TripRepository;
 use Api\Users\Repositories\DriverRepository;
+use Api\Users\Repositories\WaypointRepository;
 
 class UserService
 {
@@ -50,6 +51,9 @@ class UserService
 
         $tripRepository = new TripRepository($this->database);
         $tripRepository->create($data['trip']);
+
+        $waypointRepository = new WaypointRepository($this->database);
+        $waypointRepository->create($data['trip']);
 
         return $syncDriver;
     }
