@@ -2,9 +2,9 @@
 
 namespace Api\Users\Services;
 
+use Api\Users\Models\Trip;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Database\DatabaseManager;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Events\Dispatcher;
 use Api\Users\Exceptions\UserNotFoundException;
 use Api\Users\Events\UserWasCreated;
@@ -12,6 +12,9 @@ use Api\Users\Events\UserWasDeleted;
 use Api\Users\Events\UserWasUpdated;
 use Api\Users\Repositories\UserRepository;
 use Optimus\Bruno\EloquentBuilderTrait;
+
+use Api\Users\Repositories\TripRepository;
+use Api\Users\Repositories\DriverRepository;
 
 class UserService
 {
@@ -40,6 +43,13 @@ class UserService
     public function syncDriver($driverToken, array $data)
     {
         $syncDriver = $this->userRepository->syncDriver($driverToken, $data);
+
+        $driverRepository = new DriverRepository($this->database);
+        $driver = $driverRepository->getById($data['driver']['user_id']);
+        $driverRepository->update($driver, $data['driver']);
+
+        $tripRepository = new TripRepository($this->database);
+        $tripRepository->create($data['trip']);
 
         return $syncDriver;
     }
@@ -102,5 +112,19 @@ class UserService
         }
 
         return $user;
+    }
+
+    public function testAddTrip(array $data)
+    {
+        /*
+        $tripRepository = new TripRepository($this->database);
+
+        return $tripRepository->create($data['trip']);
+        */
+
+        $driverRepository = new DriverRepository($this->database);
+        $driver = $driverRepository->getById($data['driver']['user_id']);
+
+        return $driverRepository->update($driver, $data['driver']);
     }
 }
