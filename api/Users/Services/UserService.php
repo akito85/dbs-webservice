@@ -2,7 +2,6 @@
 
 namespace Api\Users\Services;
 
-use Api\Users\Models\Trip;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Events\Dispatcher;
