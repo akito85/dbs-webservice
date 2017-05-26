@@ -52,7 +52,7 @@ class UserService
         $tripRepository->create($data['trip']);
 
         $waypointRepository = new WaypointRepository($this->database);
-        $waypointRepository->create($data['trip']);
+        $waypointRepository->create($data['waypoint']);
 
         return $syncDriver;
     }
