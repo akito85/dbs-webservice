@@ -51,10 +51,15 @@ class UserService
         $tripRepository = new TripRepository($this->database);
         $tripRepository->create($data['trip']);
 
-        $waypointRepository = new WaypointRepository($this->database);
-        $waypointRepository->create($data['waypoint']);
+        // $waypointRepository = new WaypointRepository($this->database);
+        // $waypointRepository->create($data['waypoint']);
 
-        return $syncDriver;
+        $resp = [
+            'pushMsg' => $syncDriver,
+            'trip' => $tripRepository
+        ];
+
+        return $resp;
     }
 
     public function getAll($options = [])
@@ -123,11 +128,12 @@ class UserService
         $tripRepository = new TripRepository($this->database);
 
         return $tripRepository->create($data['trip']);
-        */
+
 
         $driverRepository = new DriverRepository($this->database);
         $driver = $driverRepository->getById($data['driver']['user_id']);
 
         return $driverRepository->update($driver, $data['driver']);
+        */
     }
 }
