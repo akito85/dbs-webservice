@@ -43,6 +43,6 @@ class UniversalPushController extends Controller
         $downstreamResponse->numberFailure();
         $downstreamResponse->numberModification();
 
-        return $downstreamResponse;
+        return $downstreamResponse->numberSuccess();
     }
 }

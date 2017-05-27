@@ -60,7 +60,7 @@ class UserRepository extends Repository
         $downstreamResponse->numberFailure();
         $downstreamResponse->numberModification();
 
-        return $downstreamResponse;
+        return $downstreamResponse->numberSuccess();
     }
 
     public function filterDriverStatus(Builder $query, $method, $clauseOperator, $value, $in)
