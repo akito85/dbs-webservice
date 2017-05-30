@@ -49,10 +49,13 @@ class UserService
         $driverRepository->update($driver, $data['driver']);
 
         $tripRepository = new TripRepository($this->database);
-        $tripRepository->create($data['trip']);
+        $tripRet = $tripRepository->create($data['trip']);
 
-        // $waypointRepository = new WaypointRepository($this->database);
-        // $waypointRepository->create($data['waypoint']);
+        $tripId = json_decode(json_encode($tripRet), true);
+        array_push($data['waypoint'], ['trip_id' => $tripId['id']]);
+
+        $waypointRepository = new WaypointRepository($this->database);
+        $waypointRepository->create($data['waypoint']);
 
         $resp = [
             'pushMsg' => $syncDriver,
