@@ -11,7 +11,8 @@ class Waypoint extends Model
     protected $fillable = [
         'latitude',
         'longitude',
-        'status'
+        'status',
+        'mileage'
     ];
 
     public function trips()
