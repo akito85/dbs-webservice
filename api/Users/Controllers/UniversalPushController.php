@@ -54,7 +54,7 @@ class UniversalPushController extends Controller
             catch(\Exception $e) {
                 echo $e->getCode() . ' ' . $e->getMessage() . ' \n';
             }
-            return '{"success" : ' . $downstreamResponse->numberSuccess() .'"}';
+            return '{"success" : "' . $downstreamResponse->numberSuccess() .'"}';
         } else {
             return '{"message": "Data is empty"}';
         }
