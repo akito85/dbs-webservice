@@ -17,7 +17,7 @@ class CreateTripRequest extends ApiRequest
             'trip' => 'array|required',
             'trip.driver_id' => 'required|string',
             'trip.passenger_id' => 'required|string',
-            'trip.information' => 'required',
+            // 'trip.information' => 'required',
             'trip.status' => 'required'
         ];
     }

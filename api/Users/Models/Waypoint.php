@@ -12,7 +12,8 @@ class Waypoint extends Model
         'latitude',
         'longitude',
         'status',
-        'mileage'
+        'mileage',
+        'trip_id'
     ];
 
     public function trips()

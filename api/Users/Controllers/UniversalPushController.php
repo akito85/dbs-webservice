@@ -45,7 +45,10 @@ class UniversalPushController extends Controller
                 $notification = $notificationBuilder->build();
                 $data         = $dataBuilder->build();
 
-                $downstreamResponse = FCM::sendTo($deviceToken, $option, $notification, $data);
+                $downstreamResponse = FCM::sendTo($deviceToken,
+                                                    $option,
+                                                    $notification,
+                                                    $data);
 
                 $downstreamResponse->numberSuccess();
                 $downstreamResponse->numberFailure();
