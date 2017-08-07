@@ -15,8 +15,8 @@ class CreateVehicleRequest extends ApiRequest
     {
         return [
             'vehicle' => 'array|required',
-            'vehicle.name' => 'required|string',
-            'vehicle.driver_id' => 'required|integer',
+            'vehicle.name' => 'required',
+            'vehicle.driver_id' => 'required',
             'vehicle.kilometer' => 'required',
             'vehicle.year' => 'required',
             'vehicle.ownership' => 'required|string'

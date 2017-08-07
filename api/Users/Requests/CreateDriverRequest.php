@@ -15,7 +15,7 @@ class CreateDriverRequest extends ApiRequest
     {
         return [
             'driver' => 'array|required',
-            'driver.user_id' => 'required|integer',
+            'driver.user_id' => 'required',
             'driver.status' => 'required',
             'driver.latitude' => 'required',
             'driver.longitude' => 'required'

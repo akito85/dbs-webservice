@@ -15,7 +15,7 @@ class CreateSiteRequest extends ApiRequest
     {
         return [
             'site' => 'array|required',
-            'site.name' => 'required|string',
+            'site.name' => 'required',
             'site.latitude' => 'required',
             'site.longitude' => 'required',
             'site.region_id' => 'required'

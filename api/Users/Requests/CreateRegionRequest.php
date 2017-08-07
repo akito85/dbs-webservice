@@ -15,7 +15,7 @@ class CreateRegionRequest extends ApiRequest
     {
         return [
             'region' => 'array|required',
-            'region.name' => 'required|string'
+            'region.name' => 'required'
         ];
     }
 

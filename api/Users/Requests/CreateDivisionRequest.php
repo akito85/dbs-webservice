@@ -15,8 +15,8 @@ class CreateDivisionRequest extends ApiRequest
     {
         return [
             'division' => 'array|required',
-            'division.site_id' => 'required|integer',
-            'division.name' => 'required|string'
+            'division.site_id' => 'required',
+            'division.name' => 'required'
         ];
     }
 

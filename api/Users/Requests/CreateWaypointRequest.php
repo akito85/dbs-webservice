@@ -15,7 +15,7 @@ class CreateWaypointRequest extends ApiRequest
     {
         return [
             'waypoint' => 'array|required',
-            'waypoint.trip_id' => 'required|integer',
+            'waypoint.trip_id' => 'required',
             'waypoint.mileage' => 'required',
             'waypoint.start_time' => 'required',
             'waypoint.end_time' => 'required',

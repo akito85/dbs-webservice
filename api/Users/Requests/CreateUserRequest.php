@@ -17,7 +17,7 @@ class CreateUserRequest extends ApiRequest
             'user' => 'array|required',
             'user.password' => 'required|string|min:8',
             'user.email' => 'required|email',
-            'user.full_name' => 'required|string',
+            'user.full_name' => 'required',
             'user.gender' => 'required',
             'user.phone_number' => 'required|integer',
             'user.division_id' => 'required',
