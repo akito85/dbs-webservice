@@ -15,8 +15,8 @@ class CreateTripRequest extends ApiRequest
     {
         return [
             'trip' => 'array|required',
-            'trip.driver_id' => 'required|string',
-            'trip.passenger_id' => 'required|string',
+            'trip.driver_id' => 'required',
+            'trip.passenger_id' => 'required',
             // 'trip.information' => 'required',
             'trip.status' => 'required'
         ];
