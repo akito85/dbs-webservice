@@ -9,11 +9,19 @@ use Api\Users\Models\Trip;
 class Waypoint extends Model
 {
     protected $fillable = [
-        'latitude',
-        'longitude',
-        'status',
-        'mileage',
-        'trip_id'
+        'trip_id',
+        'pickup_location',
+        'pickup_lat',
+        'pickup_lng',
+        'dropoff_location',
+        'dropoff_lat',
+        'dropoff_lng',
+        'sequence',
+        'start_time',
+        'end_time',
+        'created_at',
+        'updated_at',
+        'mileage'
     ];
 
     public function trips()

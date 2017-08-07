@@ -16,6 +16,11 @@ class Trip extends Model
         'information'
     ];
 
+    public $timestamps = [
+        'created_at',
+        'updated_at'
+    ];
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'users', 'id', 'user_id');

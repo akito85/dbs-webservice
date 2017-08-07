@@ -12,7 +12,13 @@ class Driver extends Model
         'user_id',
         'latitude',
         'longitude',
-        'status'
+        'status',
+        'mileage'
+    ];
+
+    public $timestamps = [
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -23,4 +29,5 @@ class Driver extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
 }

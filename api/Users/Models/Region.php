@@ -12,6 +12,11 @@ class Region extends Model {
         'name'
     ];
 
+    public $timestamps = [
+        'created_at',
+        'updated_at'
+    ];
+
     public function sites()
     {
         return $this->belongsTo(Site::class, 'region_id', 'id');

@@ -13,6 +13,11 @@ class Division extends Model
         'site_id'
     ];
 
+    public $timestamps = [
+        'created_at',
+        'updated_at'
+    ];
+
     /**
      * The relationship of divisions table
      * 1. divisions.site_id --> sites.id

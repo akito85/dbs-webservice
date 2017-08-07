@@ -31,7 +31,13 @@ class User extends Authenticatable
         'status',
         'token',
         'requests',
-        'division_id'
+        'division_id',
+        'deleted'
+    ];
+
+    public $timestamps = [
+        'created_at',
+        'updated_at'
     ];
 
     /**

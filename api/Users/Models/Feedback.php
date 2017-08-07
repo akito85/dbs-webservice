@@ -14,6 +14,11 @@ class Feedback extends Model
       'rating'
    ];
 
+   public $timestamps = [
+       'created_at',
+       'updated_at'
+   ];
+
    public function trips()
    {
        return $this->belongsTo(Trip::class, 'id', 'trip_id');

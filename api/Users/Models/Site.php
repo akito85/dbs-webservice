@@ -18,6 +18,11 @@ class Site extends Model
         'region_id'
     ];
 
+    public $timestamps = [
+        'created_at',
+        'updated_at'
+    ];
+
     /**
      * The relationship of divisions table
      * 1. sites.id --> divisions.site_id

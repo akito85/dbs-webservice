@@ -18,6 +18,11 @@ class Vehicle extends Model
         'year'
     ];
 
+    public $timestamps = [
+        'created_at',
+        'updated_at'
+    ];
+
     public function users()
     {
         return $this->belongsTo(User::class, 'driver_id', 'id');
