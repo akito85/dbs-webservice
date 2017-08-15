@@ -17,7 +17,6 @@ class CreateFeedbackRequest extends ApiRequest
             'feedback' => 'array|required',
             'feedback.trip_id' => 'required',
             'feedback.rating' => 'required',
-            'feedback.comment' => 'required'
         ];
     }
 
