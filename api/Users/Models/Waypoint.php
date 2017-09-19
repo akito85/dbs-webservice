@@ -21,7 +21,8 @@ class Waypoint extends Model
         'end_time',
         'created_at',
         'updated_at',
-        'mileage'
+        'mileage',
+        'checkpoints'
     ];
 
     public function trips()
