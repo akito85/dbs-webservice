@@ -4,6 +4,7 @@ namespace Api\Users\Repositories;
 
 use Api\Users\Models\Driver;
 use Infrastructure\Database\Eloquent\Repository;
+use Illuminate\Support\Facades\Mail;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
@@ -68,18 +69,31 @@ class DriverRepository extends Repository
 
         $driverStatus = $drivers->join('users', 'drivers.user_id', '=', 'users.id')
                                 ->select('drivers.*', 'users.token')
-                                ->where('drivers.status', 'Available')
+                                ->where('drivers.status', 'available')
                                 ->get();
 
         foreach ($driverStatus as $driver) {
-            $driver->update(['status' => 'Unavailable']);
+            $driver->update(['status' => 'unavailable']);
             $this->syncUser($driver->token, [
                 'notification' =>
                     ['title' => 'Time is up!', 'body' => 'The day is over. Time to go home.', 'sound' => 'default'],
                 'payloads' =>    
                     ['title' => 'Time is up!', 'message' => 'The day is over. Time to go home.', 'status' => 'checkout']
             ]);
+
         }
+
+        $this->sendNotification('Driver Checkout by 17:00');
+
         return $driverStatus;
+    }
+
+    public function sendNotification($content)
+    {
+        Mail::raw($content, function ($message) {
+           $message->to('akito.evol@gmail.com')->subject('Driver Checked Out');
+        });
+
+        return response()->json(['message' => 'Request completed']);       
     }
 }
