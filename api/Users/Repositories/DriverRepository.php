@@ -91,7 +91,7 @@ class DriverRepository extends Repository
     public function sendNotification($content)
     {
         Mail::raw($content, function ($message) {
-           $message->to('akito.evol@gmail.com')->subject('Driver Checked Out');
+           $message->to('info@noxus.co.id')->subject('Driver Checked Out');
         });
 
         return response()->json(['message' => 'Request completed']);       
