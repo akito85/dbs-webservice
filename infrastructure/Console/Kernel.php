@@ -3,6 +3,7 @@
 namespace Infrastructure\Console;
 
 use Api\Users\Console\AddUserCommand;
+use Api\Users\Console\CheckoutDriverCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        AddUserCommand::class
+        AddUserCommand::class,
+        CheckoutDriverCommand::class
     ];
 
     /**
@@ -27,5 +29,9 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+                  
+        $schedule->command('drivers:checkout')
+                 ->timezone('Asia/Jakarta')
+                 ->dailyAt('17:00');
     }
 }

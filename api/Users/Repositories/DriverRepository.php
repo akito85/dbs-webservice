@@ -60,4 +60,26 @@ class DriverRepository extends Repository
 
         return $downstreamResponse;
     }
+
+    public function checkout()
+    {
+        $drivers = $this->getModel();
+        //$checkout = $driver::where('status', 'Available')->update(['status' => 'Unavailable']);
+
+        $driverStatus = $drivers->join('users', 'drivers.user_id', '=', 'users.id')
+                                ->select('drivers.*', 'users.token')
+                                ->where('drivers.status', 'Available')
+                                ->get();
+
+        foreach ($driverStatus as $driver) {
+            $driver->update(['status' => 'Unavailable']);
+            $this->syncUser($driver->token, [
+                'notification' =>
+                    ['title' => 'Time is up!', 'body' => 'The day is over. Time to go home.', 'sound' => 'default'],
+                'payloads' =>    
+                    ['title' => 'Time is up!', 'message' => 'The day is over. Time to go home.', 'status' => 'checkout']
+            ]);
+        }
+        return $driverStatus;
+    }
 }
