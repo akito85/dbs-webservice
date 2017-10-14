@@ -72,18 +72,19 @@ class DriverRepository extends Repository
                                 ->where('drivers.status', 'available')
                                 ->get();
 
-        foreach ($driverStatus as $driver) {
-            $driver->update(['status' => 'unavailable']);
-            $this->syncUser($driver->token, [
-                'notification' =>
-                    ['title' => 'Time is up!', 'body' => 'The day is over. Time to go home.', 'sound' => 'default'],
-                'payloads' =>    
-                    ['title' => 'Time is up!', 'message' => 'The day is over. Time to go home.', 'status' => 'checkout']
-            ]);
+        if (!$driverStatus->isEmpty()) {
+            foreach ($driverStatus as $driver) {
+                $driver->update(['status' => 'unavailable']);
+                $this->syncUser($driver->token, [
+                    'notification' =>
+                        ['title' => 'Time is up!', 'body' => 'The day is over. Time to go home.', 'sound' => 'default'],
+                    'payloads' =>    
+                        ['title' => 'Time is up!', 'message' => 'The day is over. Time to go home.', 'status' => 'checkout']
+                ]);
+            }
 
+            $this->sendNotification('Driver Checkout by 17:00');
         }
-
-        $this->sendNotification('Driver Checkout by 17:00');
 
         return $driverStatus;
     }

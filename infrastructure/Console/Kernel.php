@@ -32,6 +32,7 @@ class Kernel extends ConsoleKernel
                   
         $schedule->command('drivers:checkout')
                  ->timezone('Asia/Jakarta')
-                 ->dailyAt('17:00');
+                 ->dailyAt('17:00')
+                 ->weekdays();
     }
 }
