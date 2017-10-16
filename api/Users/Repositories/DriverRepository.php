@@ -83,7 +83,7 @@ class DriverRepository extends Repository
                 ]);
             }
 
-            $this->sendNotification('Driver Checkout by 17:00');
+            //$this->sendNotification('Driver Checkout by 17:00');
         }
 
         return $driverStatus;
