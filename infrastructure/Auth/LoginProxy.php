@@ -43,15 +43,18 @@ class LoginProxy
         $user = $this->userRepository->getWhere('username', $username)->first();
 
         if (!is_null($user)) {
-            return $this->proxy('password', [
-                'username' => $username,
-                'password' => $password,
-                'access_level' => $user->access_level,
-                'user_id' => $user->id,
-                'division_id' => $user->division_id
-            ]);
+            if (!$user->deleted) {
+                return $this->proxy('password', [
+                    'username' => $username,
+                    'password' => $password,
+                    'access_level' => $user->access_level,
+                    'user_id' => $user->id,
+                    'division_id' => $user->division_id
+                ]);
+            } else {
+                return json_encode(['message' => 'User is not available']);
+            }
         }
-
         throw new InvalidCredentialsException();
     }
 

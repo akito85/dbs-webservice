@@ -26,7 +26,7 @@ class LoginController extends Controller
           return $this->response($this->loginProxy->attemptLogin($username, $password));
         }
         catch(\Exception $e) {
-          return $this->response(['message' => 'Wrong credentials'], 404);
+          return $this->response(['message' => $e->getMessage(), $e->getCode()]);
         }
     }
 
